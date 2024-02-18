@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/campaign/show": "pages/campaign/show.js",
-  "/campaign/createcomtract": "pages/campaign/createcomtract.js"
+  "/campaign/requests": "pages/campaign/requests.js",
+  "/campaign/requests/new": "pages/campaign/requests/new.js",
+  "/campaign/show": "pages/campaign/show.js"
 }

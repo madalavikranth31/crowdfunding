@@ -46,7 +46,7 @@ class CampaignIndex extends Component{
         <Link route='/campaign/createcomtract'>
         <a>
          <Button floated="right"
-         content ="Crete Campaign"
+         content ="Create Campaign"
          icon="add circle"
          primary
          />
