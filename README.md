@@ -20,13 +20,13 @@ Before you can use this crowdfunding application, ensure that you have the follo
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/vijay-vardhan-reddy/crowdfunding-app.git
+   git clone https://github.com/madalavikranth31/crowdfunding.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd crowdfunding-app
+   cd crowdfunding
    ```
 
 3. Install project dependencies using npm:
