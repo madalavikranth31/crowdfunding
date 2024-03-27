@@ -9,15 +9,17 @@ import {Link} from '../../routes';
 class CampignShow extends Component{
  static async getInitialProps(props){
     const campaign= Campaign(props.query.address);
-     const summary= await campaign.methods.getSummary().call();
+    const summary= await campaign.methods.getSummary().call();
 
     return {
         address: props.query.address,
-        minimumContribution: summary[0],
-        balance: summary[1],
-        requestsCount: summary[2],
-        approversCount: summary[3],
-        manager: summary[4],
+        campaignTitle: summary[0],
+        campaignDescription: summary[1],
+        minimumContribution: summary[2],
+        balance: summary[3],
+        requestsCount: summary[4],
+        approversCount: summary[5],
+        manager: summary[6],
     };
  }
 
@@ -65,7 +67,10 @@ class CampignShow extends Component{
     render(){
         return (
             <Layout>
-                <h3>Campaign Show</h3>
+                
+                <h2>{this.props.campaignTitle}</h2>
+                <p style={{ fontSize: '15px' }}>{this.props.campaignDescription}</p>
+                
                 <Grid>
                     <Grid.Row>
                     <Grid.Column width={10}>

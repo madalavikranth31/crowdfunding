@@ -8,18 +8,10 @@ import Layout from '../../components/layout';
 import web3 from '../../ethereum/web3';
 import {Router} from '../../routes.js';
 
- 
-
-
-
-
-
-
-
-
-
 class CampaignNew extends Component{
     state={
+        title: '',
+        description:'',
         minimumContribution: '',
         errorMessage: '',
         loading: false
@@ -31,7 +23,7 @@ class CampaignNew extends Component{
         this.setState({loading: true, errorMessage: ''});
         try{
         const accounts= await web3.eth.getAccounts();
-        await factory.methods.createCampaign(this.state.minimumContribution).send({
+        await factory.methods.createCampaign(this.state.title, this.state.description, this.state.minimumContribution).send({
             from: accounts[0]
         });
         Router.pushRoute('/')
@@ -42,19 +34,33 @@ class CampaignNew extends Component{
     };
 
 
-
     render(){
    
         return (
             
             <Layout> 
              
-              
-               
-                <h3>Create new campaign</h3>
+                <h2>Create new campaign</h2>
                 <Form onSubmit={this.onSubmit} 
                 error={!!this.state.errorMessage}
                 >
+                    <Form.Field>
+                        <label>Campaign Title</label>
+                        <Input 
+                        value={this.state.title}
+                        onChange={(event) => this.setState({title: event.target.value})}
+                        ></Input>
+                    </Form.Field>
+
+                    <Form.Field>
+                        <label>Description</label>
+                        <textarea 
+                        value={this.state.description}
+                        onChange={(event) => this.setState({description: event.target.value})}
+                        rows="5"
+                        ></textarea>
+                    </Form.Field>
+
                     <Form.Field>
                         <label>Min contibution</label>
                         <Input label= 'wei' 
@@ -67,11 +73,8 @@ class CampaignNew extends Component{
                         <Message error header="OOPS!" content={this.state.errorMessage}/>
 
                         <Button loading={this.state.loading} primary> Create!</Button>
-                        
-                    
+                                  
                 </Form>
-
-              
 
             </Layout>
         )
